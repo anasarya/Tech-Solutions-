@@ -1,0 +1,125 @@
+/* ===== Header ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #3b3c3d, #4e5b5c);
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: top 0.4s ease;
+}
+
+.header.hidden {
+  top: -100px; /* hide header on scroll down */
+}
+
+/* ===== Logo Left ===== */
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+}
+
+/* ===== Center Neon Text ===== */
+.logo-center-text {
+  position: absolute;
+  left: 14%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #00fff2;
+  text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 40px #00fff2;
+  letter-spacing: 1.5px;
+}
+
+/* ===== Navigation Right ===== */
+.nav-list {
+  display: flex; /* always visible on large screens */
+  gap: 1.5rem;
+  transition: all 0.4s ease;
+  right: 40%;
+}
+
+.nav-list li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-list li a:hover {
+  color: #626666;
+  transform: scale(1.1);
+}
+
+/* ===== Buttons ===== */
+.menu-toggle,
+.dark-toggle {
+  display: none; /* hidden on large screens */
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: white;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.menu-toggle:hover,
+.dark-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* ===== Responsive (Small/Medium Screens) ===== */
+@media(max-width: 992px) {
+  .nav-list {
+    display: none; /* hidden by default */
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background: rgba(0,0,0,0.95);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s ease;
+  }
+
+  .nav-list.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menu-toggle,
+  .dark-toggle {
+    display: inline-block;
+  }
+
+  .logo-center-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== Animation Keyframes (Optional extra effect) ===== */
+@keyframes slideDown {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
